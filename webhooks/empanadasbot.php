@@ -3,15 +3,15 @@
 include_once "../somosioticos/somosioticos_dialogflow.php";
 credenciales('empanadasbot','123456789');
 
-if(intent_recibido("calculadora"))
-{
-	$valor1 = obtener_variable()['numero1'];
-	$valor2 = obtener_variable()['numero2'];
+if (intent_recibido("calculadora")){
+	
+	$valor1 = obtener_variables()['numero1'];
+	$valor2 = obtener_variables()['numero2'];
 
 	$resultado = $valor1 + $valor2;
-	enviarTexto("Luego de sumar los valores el resultado es $resultado");
 	
-
+	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado" );
+	
 }
 
 //echo "Ya entró";
