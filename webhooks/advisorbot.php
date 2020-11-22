@@ -18,14 +18,15 @@ if (intent_recibido("calculadora")){
 
 	$resultado = $valor1 + $valor2;
 
-	$consulta = $mysqli->query("SELECT * FROM advisor.centrohospitalario");
+	$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
+	
+	while ($fila = mysqli_fetch_row($consulta)) {
+		
+	$respuesta =  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
 
-		if($consulta) // will return true if succefull else it will return false
-		{
-		$entro="si entró, y trae datos";
-		}
+	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $respuesta");
 
-	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro");
+	//enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro");
 	
 }
 
