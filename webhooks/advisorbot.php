@@ -23,12 +23,12 @@ if (intent_recibido("calculadora")){
 	while ($fila = mysqli_fetch_row($consulta)) {
 		
 	$respuesta =  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-
+}
 	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $respuesta");
 
 	//enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro");
 	
-}
+
 
 //echo "Ya entró";
 //debug();
