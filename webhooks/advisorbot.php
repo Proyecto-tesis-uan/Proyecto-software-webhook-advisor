@@ -22,10 +22,10 @@ if (intent_recibido("calculadora")){
 	$respuestaAnterior="";
 	while ($fila = mysqli_fetch_row($consulta)) {
 		
-		$respuesta =  $respuestaAnterior . "        " . $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] ;
+		$respuesta =  $respuestaAnterior . "," . $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] ;
 		$respuestaAnterior = $respuesta;
 	}
-	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $respuesta");
+	enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
 }
 	//enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro");
 	
