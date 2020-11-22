@@ -17,7 +17,14 @@ if (intent_recibido("calculadora")){
 	$valor2 = obtener_variables()['numero2'];
 
 	$resultado = $valor1 + $valor2;
-	
+
+	$resultado = $mysqli->query("SELECT * FROM advisor.centrohospitalario");
+
+		if($resultado) // will return true if succefull else it will return false
+		{
+		$entro="si entró, y trae datos";
+		}
+
 	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro");
 	
 }
