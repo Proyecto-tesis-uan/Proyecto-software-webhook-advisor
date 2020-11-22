@@ -1,9 +1,7 @@
 <?php
 //esto incluye la librería
 include_once "../somosioticos/somosioticos_dialogflow.php";
-include_once "../Conexion/databaseconnect.php";
 credenciales('empanadasbot','123456789');
-
 // me conecto a db
 $mysqli = mysqli_connect("databasechatbotadvisor.caynk19nrbhz.us-west-2.rds.amazonaws.com", "adminAdvisor", "adminAdvisor", "advisor");
 $entro="";
@@ -19,7 +17,8 @@ if (intent_recibido("calculadora")){
 	$valor2 = obtener_variables()['numero2'];
 
 	$resultado = $valor1 + $valor2;
-	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro" );
+	
+	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro");
 	
 }
 
