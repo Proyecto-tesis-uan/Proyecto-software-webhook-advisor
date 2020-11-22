@@ -18,9 +18,9 @@ if (intent_recibido("calculadora")){
 
 	$resultado = $valor1 + $valor2;
 
-	$resultado = $mysqli->query("SELECT * FROM advisor.centrohospitalario");
+	$consulta = $mysqli->query("SELECT * FROM advisor.centrohospitalario");
 
-		if($resultado) // will return true if succefull else it will return false
+		if($consulta) // will return true if succefull else it will return false
 		{
 		$entro="si entró, y trae datos";
 		}
