@@ -1,7 +1,27 @@
 <?php
 //esto incluye la librería
 include_once "../somosioticos/somosioticos_dialogflow.php";
+include_once "../Conexion/databaseconnect.php";
 credenciales('empanadasbot','123456789');
+
+// me conecto a db
+//$mysqli = mysqli_connect("localhost", "admin_empabot", "123456789", "admin_empabot");
+
+echo "Connected to $conn ";
+
+if (!$mysqli) {
+	echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
+	die();
+}
+
+if (intent_recibido("consulta")){
+	
+	//$resultado = $mysqli->query("SELECT * FROM advisor.centrohospitalario");
+
+	enviar_texto("ha ingresado a la funcion consulta $conn ");
+	
+}
+
 
 if (intent_recibido("calculadora")){
 	
@@ -17,15 +37,10 @@ if (intent_recibido("calculadora")){
 //echo "Ya entró";
 //debug();
 
+
+
+
 /*
-// me conecto a db
-$mysqli = mysqli_connect("localhost", "admin_empabot", "123456789", "admin_empabot");
-
-if (!$mysqli) {
-	echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
-	die();
-}
-
 //demora
 $demora_x_empanada = 0.5;
 
