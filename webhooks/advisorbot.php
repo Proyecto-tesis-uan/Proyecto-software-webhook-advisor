@@ -22,7 +22,7 @@ if (intent_recibido("calculadora")){
 	$respuestaAnterior="";
 	while ($fila = mysqli_fetch_row($consulta)) {
 		
-		$respuesta =  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " " . "\n" . $respuestaAnterior;
+		$respuesta =  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " " . "<br />" . $respuestaAnterior;
 		$respuestaAnterior = $respuesta;
 	}
 	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $respuesta");
