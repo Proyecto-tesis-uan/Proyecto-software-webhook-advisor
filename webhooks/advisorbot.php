@@ -23,7 +23,7 @@ if (intent_recibido("calculadora")){
 
 
 	
-	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro , Connected to $dbname at $host successfully." );
+	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y $entro" );
 	
 }
 
