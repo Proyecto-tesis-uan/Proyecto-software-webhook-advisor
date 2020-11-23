@@ -57,6 +57,38 @@ function intent_recibido($nombre)
     }
 }
 
+function nombre_intent_recibido()
+{
+    global $input;
+    $contadorNo = 0;
+    $contadorSi = 0;
+    $nombreIntent = $input["queryResult"]["intent"]["displayName"];
+
+    if ($nombreIntent) {
+        
+        $cadena = str_replace(' ', '', $nombreIntent);
+        $cadenados = str_replace('-', ' ', $cadena);
+        $porciones = explode(" ", $cadenados);
+        
+        if( $porciones[1] == "SI") { ++$contadorSi;}
+        if( $porciones[2] == "SI") {++$contadorSi;}
+        if( $porciones[3]== "SI") {++$contadorSi;}
+        if( $porciones[4]== "SI") {++$contadorSi;}
+        
+        if(contadorSi >= 3 )
+        {
+            return true;
+        }
+        else 
+        {
+            return false;
+        }
+        
+    } else {
+        return false;
+    }
+}
+
 //recibirá las variables y las almacenará en un array.
 function recibir_variables($nombre)
 {
