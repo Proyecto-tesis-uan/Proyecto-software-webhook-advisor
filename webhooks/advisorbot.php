@@ -39,7 +39,8 @@ if (intent_recibido("centrohospitalario")){
 	}
 	enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
 }
-if (intent_recibido("cefalea - yes - custom - yes")){
+if (intent_recibido("cefalea - yes - custom - yes") || 
+    intent_recibido("conjuntivitis - yes - yes - yes - yes - yes - yes") ){
 
 	$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
 	$respuestaAnterior="";
