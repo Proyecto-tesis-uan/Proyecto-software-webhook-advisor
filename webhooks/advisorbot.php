@@ -76,7 +76,7 @@ if (!$mysqli) {
 		}
 
 		enviar_texto( "De acuerdo al estudio realizado se identifica que se encuentra sintomas asociados a la patología $patología; Teniendo en cuenta lo descrito su nivel de triage es 4 $Triage; lo
-		recomendable es ir algun centro hospitalario por urgencia, como por ejemplo: $respuesta ");
+		recomendable es ira algún centro hospitalario por urgencia, como por ejemplo: $respuesta ");
 		mysqli_close($mysqli);
 	}
 	else
@@ -89,7 +89,7 @@ if (!$mysqli) {
 			$respuestaAnterior = $respuestaeps;
 		}
 
-		enviar_texto( "No se considera necesario desplazamiento hasta urgencias, puedes solicitar una cita medica externa con su EPS; Los números de la principales eps son los siguientes:
+		enviar_texto( "No se considera necesario desplazamiento hasta urgencias, puedes solicitar una cita medica externa con su EPS; Algunas de la principales eps son los siguientes:
 		$respuestaeps");
 		mysqli_close($mysqli);
 	}	
