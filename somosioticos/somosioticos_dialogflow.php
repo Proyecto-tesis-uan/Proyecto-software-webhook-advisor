@@ -82,7 +82,7 @@ function nombre_intent_recibido()
         if( $porciones[3]== "yes") { ++$contadorSi; }
         if( $porciones[4]== "yes") { ++$contadorSi; }
 
-        if(strpos($mystring, $conjuntivitis) !== false || strpos($mystring, $cefalea) !== false || strpos($mystring, $lumbalgia) !== false ||  strpos($mystring, $tinitis) !== false ||  strpos($mystring, $odontalgia) !== false ){
+        if(strpos($nombreIntent, $conjuntivitis) !== false || strpos($nombreIntent, $cefalea) !== false || strpos($nombreIntent, $lumbalgia) !== false ||  strpos($nombreIntent, $tinitis) !== false ||  strpos($nombreIntent, $odontalgia) !== false ){
 
             $patología = $porciones[0];
 
