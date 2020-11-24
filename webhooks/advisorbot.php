@@ -1,8 +1,7 @@
 <?php
 //esto incluye la librería
 include_once "../somosioticos/somosioticos_dialogflow.php";
-credenciales('empanadasbot','123456789');
-// me conecto a db
+//credenciales('empanadasbot','123456789');
 $mysqli = mysqli_connect("databasechatbotadvisor.caynk19nrbhz.us-west-2.rds.amazonaws.com", "adminAdvisor", "adminAdvisor", "advisor");
 $entro="";
 if (!$mysqli) {
@@ -11,89 +10,36 @@ if (!$mysqli) {
 	die();
 }
 
-	if (intent_recibido("calculadora")){
-		
-		$valor1 = obtener_variables()['numero1'];
-		$valor2 = obtener_variables()['numero2'];
-
-		$resultado = $valor1 + $valor2;
-
-		$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
-		$respuestaAnterior="";
-		while ($fila = mysqli_fetch_row($consulta)) {
-			
-			$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-			$respuestaAnterior = $respuesta;
-		}
-		enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
-	}
-
-	if (intent_recibido("centrohospitalario")){
-
-		$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
-		$respuestaAnterior="";
-		while ($fila = mysqli_fetch_row($consulta)) {
-			
-			$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-			$respuestaAnterior = $respuesta;
-		}
-		enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
-	}
-
-//TRIAGE DE PATOLOGIAS
-    $conjuntivitis=4;
-	$cefalea=5;
-	$lumbalgia=4;
-    $tinitis=5;
-	$odontalgia=4;
-	$rinitis=5;
-
-	$triage = 0;
-
-	if ($patologia == "conjuntivitis") {
-		$triage=$conjuntivitis;
-	} elseif ($patologia == "cefalea") {
-		$triage=$cefalea;
-	} elseif ($patologia == "lumbalgia") {
-		$triage=$lumbalgia;
-	} elseif ($patologia == "tinitis") {
-		$triage=$tinitis;
-	} elseif ($patologia == "odontalgia") {
-		$triage=$odontalgia;
-	} elseif ($patologia == "rinitis") {
-		$triage=$rinitis;
-	}
-
+if (intent_recibido("calculadora")){
 	
-	if(nombre_intent_recibido())//Devuelve si los sintomas son mayor a 3
-    {
-		$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
-		$respuestaAnterior="";
-		while ($fila = mysqli_fetch_row($consulta)) {
-			
-			$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-			$respuestaAnterior = $respuesta;
-		}
+	$valor1 = obtener_variables()['numero1'];
+	$valor2 = obtener_variables()['numero2'];
 
-		enviar_texto( "De acuerdo al estudio realizado se identifica que se encuentra sintomas asociados a la patología $patología; Teniendo en cuenta lo descrito su nivel de triage es 4 $Triage; lo
-		recomendable es ira algún centro hospitalario por urgencia, como por ejemplo: $respuesta ");
-		mysqli_close($mysqli);
+	$resultado = $valor1 + $valor2;
+
+	$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
+	$respuestaAnterior="";
+	while ($fila = mysqli_fetch_row($consulta)) {
+		
+		$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
+		$respuestaAnterior = $respuesta;
 	}
-	else
-	{
-		$consulta = $mysqli->query("SELECT * FROM eps");
-		$respuestaAnterior="";
-		while ($fila = mysqli_fetch_row($consulta)) {
-			
-			$respuestaeps =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-			$respuestaAnterior = $respuestaeps;
-		}
 
-		enviar_texto( "No se considera necesario desplazamiento hasta urgencias, puedes solicitar una cita medica externa con su EPS; Algunas de la principales eps son los siguientes:
-		$respuestaeps");
-		mysqli_close($mysqli);
-	}	
+	enviar_texto( "Luego de sumar los valores te digo que el resultado es $resultado y arroja $respuesta ");
+	
+}
 
+if (intent_recibido("centrohospitalario")){
+
+	$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
+	$respuestaAnterior="";
+	while ($fila = mysqli_fetch_row($consulta)) {
+		
+		$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
+		$respuestaAnterior = $respuesta;
+	}
+	enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
+}
 
 //echo "Ya entró";
 //debug();
@@ -269,3 +215,4 @@ function agrega_imagen($url){
 */
 
  ?>
+
