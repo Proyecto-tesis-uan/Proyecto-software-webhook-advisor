@@ -69,10 +69,10 @@ function nombre_intent_recibido()
         $cadenados = str_replace('-', ' ', $cadena);
         $porciones = explode(" ", $cadenados);
         
-        if( $porciones[1] == "SI") { ++$contadorSi;}
-        if( $porciones[2] == "SI") {++$contadorSi;}
-        if( $porciones[3]== "SI") {++$contadorSi;}
-        if( $porciones[4]== "SI") {++$contadorSi;}
+        if( $porciones[1] == "YES") { ++$contadorSi;}
+        if( $porciones[2] == "YES") {++$contadorSi;}
+        if( $porciones[3]== "YES") {++$contadorSi;}
+        if( $porciones[4]== "YES") {++$contadorSi;}
         
         if($contadorSi >= 3 )
         {
