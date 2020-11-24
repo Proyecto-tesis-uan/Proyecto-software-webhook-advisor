@@ -61,6 +61,13 @@ function nombre_intent_recibido()
 {
     global $input;
     global $contadorSi;
+    global $patología;
+    $conjuntivitis="conjuntivitis";
+    $cefalea="cefalea";
+    $lumbalgia="lumbalgia";
+    $tinitis="tinitis";
+    $odontalgia="odontalgia"; 
+
     $contadorSi = 0;
     $nombreIntent = $input["queryResult"]["intent"]["displayName"];
 
@@ -75,7 +82,15 @@ function nombre_intent_recibido()
         if( $porciones[3]== "yes") { ++$contadorSi; }
         if( $porciones[4]== "yes") { ++$contadorSi; }
 
-        //$contadorSi=4;
+        if(strpos($mystring, $conjuntivitis) !== false || strpos($mystring, $cefalea) !== false || strpos($mystring, $lumbalgia) !== false ||  strpos($mystring, $tinitis) !== false ||  strpos($mystring, $odontalgia) !== false ){
+
+            $patología = $porciones[0];
+
+        } else{
+
+            $patología= "Desconocida";
+        }
+        
         
         if($contadorSi >= 3 )
         {

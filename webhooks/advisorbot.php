@@ -43,10 +43,11 @@ if (intent_recibido("centrohospitalario")){
 
 	if(nombre_intent_recibido())
     {
-		enviar_texto( "Funciona el conteo el numero de si es: $contadorSi ");
+		enviar_texto( "La cantida de si es: $contadorSi y la patologia es: $patología");
 	}
 	else
 	{
+		//No se considera necesario desplazamiento hasta urgencias, puedes solicitar una cita medica externa con su EPS; Los números de la principales eps son los siguientes:
 		enviar_texto( "No Funciona el conteo");
 	}	
 
