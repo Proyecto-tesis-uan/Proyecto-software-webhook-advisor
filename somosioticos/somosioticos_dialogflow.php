@@ -63,16 +63,16 @@ function nombre_intent_recibido()
     $contadorSi = 0;
     $nombreIntent = $input["queryResult"]["intent"]["displayName"];
 
-    if ($nombreIntent) {
+    if ($input["queryResult"]["intent"]["displayName"] || 1==1) {
         
         $cadena = str_replace(' ', '', $nombreIntent);
         $cadenados = str_replace('-', ' ', $cadena);
         $porciones = explode(" ", $cadenados);
         
-        if( $porciones[1] == "YES") { ++$contadorSi;}
-        if( $porciones[2] == "YES") {++$contadorSi;}
-        if( $porciones[3]== "YES") {++$contadorSi;}
-        if( $porciones[4]== "YES") {++$contadorSi;}
+        if( $porciones[1] == "YES") { ++$contadorSi; }
+        if( $porciones[2] == "YES") { ++$contadorSi; }
+        if( $porciones[3]== "YES") { ++$contadorSi; }
+        if( $porciones[4]== "YES") { ++$contadorSi; }
         
         if($contadorSi >= 3 )
         {
