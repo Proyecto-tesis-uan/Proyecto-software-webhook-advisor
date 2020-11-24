@@ -77,11 +77,21 @@ if (!$mysqli) {
 
 		enviar_texto( "De acuerdo al estudio realizado se identifica que se encuentra sintomas asociados a la patología $patología; Teniendo en cuenta lo descrito su nivel de triage es 4 $Triage; lo
 		recomendable es ir algun centro hospitalario por urgencia, como por ejemplo: $respuesta ");
+		mysqli_close($mysqli);
 	}
 	else
 	{
-		//No se considera necesario desplazamiento hasta urgencias, puedes solicitar una cita medica externa con su EPS; Los números de la principales eps son los siguientes:
-		enviar_texto( "No Funciona el conteo");
+		$consulta = $mysqli->query("SELECT * FROM eps");
+		$respuestaAnterior="";
+		while ($fila = mysqli_fetch_row($consulta)) {
+			
+			$respuestaeps =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
+			$respuestaAnterior = $respuestaeps;
+		}
+
+		enviar_texto( "No se considera necesario desplazamiento hasta urgencias, puedes solicitar una cita medica externa con su EPS; Los números de la principales eps son los siguientes:
+		$respuestaeps");
+		mysqli_close($mysqli);
 	}	
 
 
