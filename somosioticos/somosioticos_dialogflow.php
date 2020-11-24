@@ -63,7 +63,7 @@ function nombre_intent_recibido()
     $contadorSi = 0;
     $nombreIntent = $input["queryResult"]["intent"]["displayName"];
 
-    if ($input["queryResult"]["intent"]["displayName"] || 1==1) {
+    if ($input["queryResult"]["intent"]["displayName"]) {
         
         $cadena = str_replace(' ', '', $nombreIntent);
         $cadenados = str_replace('-', ' ', $cadena);
