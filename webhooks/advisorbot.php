@@ -11,39 +11,72 @@ if (!$mysqli) {
 	die();
 }
 
-if (intent_recibido("calculadora")){
+	if (intent_recibido("calculadora")){
+		
+		$valor1 = obtener_variables()['numero1'];
+		$valor2 = obtener_variables()['numero2'];
+
+		$resultado = $valor1 + $valor2;
+
+		$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
+		$respuestaAnterior="";
+		while ($fila = mysqli_fetch_row($consulta)) {
+			
+			$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
+			$respuestaAnterior = $respuesta;
+		}
+		enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
+	}
+
+	if (intent_recibido("centrohospitalario")){
+
+		$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
+		$respuestaAnterior="";
+		while ($fila = mysqli_fetch_row($consulta)) {
+			
+			$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
+			$respuestaAnterior = $respuesta;
+		}
+		enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
+	}
+
+//TRIAGE DE PATOLOGIAS
+    $conjuntivitis=4;
+	$cefalea=5;
+	$lumbalgia=4;
+    $tinitis=5;
+	$odontalgia=4;
+	$rinitis=5;
+
+	$triage = 0;
+
+	if ($patologia == "conjuntivitis") {
+		$triage=$conjuntivitis;
+	} elseif ($patologia == "cefalea") {
+		$triage=$cefalea;
+	} elseif ($patologia == "lumbalgia") {
+		$triage=$lumbalgia;
+	} elseif ($patologia == "tinitis") {
+		$triage=$tinitis;
+	} elseif ($patologia == "odontalgia") {
+		$triage=$odontalgia;
+	} elseif ($patologia == "rinitis") {
+		$triage=$rinitis;
+	}
+
 	
-	$valor1 = obtener_variables()['numero1'];
-	$valor2 = obtener_variables()['numero2'];
-
-	$resultado = $valor1 + $valor2;
-
-	$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
-	$respuestaAnterior="";
-	while ($fila = mysqli_fetch_row($consulta)) {
-		
-		$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-		$respuestaAnterior = $respuesta;
-	}
-	enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
-}
-
-if (intent_recibido("centrohospitalario")){
-
-	$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
-	$respuestaAnterior="";
-	while ($fila = mysqli_fetch_row($consulta)) {
-		
-		$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
-		$respuestaAnterior = $respuesta;
-	}
-	enviar_texto( "Recomendamos dirigirte a alguno de los siguientes centros hospitalarios: $respuesta");
-}
-
-
-	if(nombre_intent_recibido())
+	if(nombre_intent_recibido())//Devuelve si los sintomas son mayor a 3
     {
-		enviar_texto( "La cantida de si es: $contadorSi y la patologia es: $patología");
+		$consulta = $mysqli->query("SELECT * FROM centrohospitalario");
+		$respuestaAnterior="";
+		while ($fila = mysqli_fetch_row($consulta)) {
+			
+			$respuesta =  $respuestaAnterior . "," . "    " .  $fila[1] . " " . $fila[2] . " Telefono:" . $fila[3] . " ";
+			$respuestaAnterior = $respuesta;
+		}
+
+		enviar_texto( "De acuerdo al estudio realizado se identifica que se encuentra sintomas asociados a la patología $patología; Teniendo en cuenta lo descrito su nivel de triage es 4 $Triage; lo
+		recomendable es ir algun centro hospitalario por urgencia, como por ejemplo: $Respuesta ");
 	}
 	else
 	{
