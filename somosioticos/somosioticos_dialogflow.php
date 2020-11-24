@@ -2,6 +2,7 @@
 $usuario_recibido   = $_SERVER['PHP_AUTH_USER'];
 $pass_recibido      = $_SERVER['PHP_AUTH_PW'];
 $inputJSON          = file_get_contents('php://input');
+echo $inputJSON ;
 $input              = json_decode($inputJSON, TRUE);
 $respuesta          = "";
 $respuesta_texto    = "";
