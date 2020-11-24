@@ -73,8 +73,8 @@ function nombre_intent_recibido()
         if( $porciones[2] == "yes") { ++$contadorSi; }
         if( $porciones[3]== "yes") { ++$contadorSi; }
         if( $porciones[4]== "yes") { ++$contadorSi; }
-        
-        $contadorSi=4;
+
+        //$contadorSi=4;
         
         if($contadorSi >= 3 )
         {
