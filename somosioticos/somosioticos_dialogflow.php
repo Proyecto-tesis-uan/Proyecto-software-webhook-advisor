@@ -60,7 +60,6 @@ function intent_recibido($nombre)
 function nombre_intent_recibido()
 {
     global $input;
-    $contadorNo = 0;
     $contadorSi = 0;
     $nombreIntent = $input["queryResult"]["intent"]["displayName"];
 
@@ -75,7 +74,7 @@ function nombre_intent_recibido()
         if( $porciones[3]== "SI") {++$contadorSi;}
         if( $porciones[4]== "SI") {++$contadorSi;}
         
-        if(contadorSi >= 3 )
+        if($contadorSi >= 3 )
         {
             return true;
         }
