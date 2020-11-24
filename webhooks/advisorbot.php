@@ -76,7 +76,7 @@ if (!$mysqli) {
 		}
 
 		enviar_texto( "De acuerdo al estudio realizado se identifica que se encuentra sintomas asociados a la patología $patología; Teniendo en cuenta lo descrito su nivel de triage es 4 $Triage; lo
-		recomendable es ir algun centro hospitalario por urgencia, como por ejemplo: $Respuesta ");
+		recomendable es ir algun centro hospitalario por urgencia, como por ejemplo: $respuesta ");
 	}
 	else
 	{
