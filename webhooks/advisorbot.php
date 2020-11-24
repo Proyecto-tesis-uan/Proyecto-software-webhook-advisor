@@ -43,7 +43,7 @@ if (intent_recibido("centrohospitalario")){
 
 	if(nombre_intent_recibido())
     {
-		enviar_texto( "Funciona el conteo");
+		enviar_texto( "Funciona el conteo el numero de si es: $contadorSi ");
 	}
 	else
 	{

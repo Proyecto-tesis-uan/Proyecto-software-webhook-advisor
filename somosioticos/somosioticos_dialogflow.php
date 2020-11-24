@@ -60,6 +60,7 @@ function intent_recibido($nombre)
 function nombre_intent_recibido()
 {
     global $input;
+    global $contadorSi;
     $contadorSi = 0;
     $nombreIntent = $input["queryResult"]["intent"]["displayName"];
 
